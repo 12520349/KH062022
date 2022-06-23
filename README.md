@@ -1,4 +1,6 @@
 ## Phần điện
+![alt text](https://github.com/12520349/KH062022/blob/main/so-do-ket-noi-arduino-cnc-shield-v3.png)
+
 | Thành phần | Chức Năng |
 | --- | --- |
 | arduino uno + CNC Shield V3 GRBL + công tắc hành trình + cảm biến kim loại SN04 | Điều khiển 3 step X, Y , Z |
