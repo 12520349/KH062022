@@ -1,5 +1,7 @@
 ## Phần điện
 ![alt text](https://github.com/12520349/KH062022/blob/main/so-do-ket-noi-arduino-cnc-shield-v3.png)
+![alt text](https://github.com/12520349/KH062022/blob/main/bst7960.jpg)
+![alt text](https://github.com/12520349/KH062022/blob/main/pca9685.jpg)
 
 | Thành phần | Chức Năng |
 | --- | --- |
