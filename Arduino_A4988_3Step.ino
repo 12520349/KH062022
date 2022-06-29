@@ -91,39 +91,41 @@ void _resetY() {
   int vLimitY = analogRead(A0); // đọc cảm biến NS04
   Serial.println(vLimitY);
 
-  while (vLimitY != 0) {
+  while (vLimitY > 10) {
     vLimitY = analogRead(A0);
-    //   Serial.print("SN04: ");
+    Serial.print("SN04: ");
 
-    //   Serial.println(vLimitY);
+    Serial.println(vLimitY);
 
     int max_Y = 40;
     digitalWrite(Enable, LOW); //
     digitalWrite(dir_Y, HIGH); // Set Dir high  - Set chiều quay mức cao
     for (int j = 0; j < max_Y; j++) {
 
-      for (int x = 0; x < 10; x++) // lặp 4096 lần
+      for (int x = 0; x < 20; x++) // lặp 4096 lần
       {
 
         digitalWrite(step_Y, LOW); // Output high - xung mức cao
-        delayMicroseconds(120); // Trễ 1ms
+        delayMicroseconds(500); // Trễ 1ms
         digitalWrite(step_Y, HIGH); // Output low - xung mức thấp
-        delayMicroseconds(120); // Trễ 1ms
+        delayMicroseconds(500); // Trễ 1ms
       }
+       vLimitY = analogRead(A0);
+        Serial.println(vLimitY);
 
-      vLimitY = analogRead(A0);
-      if (vLimitY == 0) {
+      if (vLimitY < 5) {
         break;
       }
     }
-    //delay(100);
-    delayMicroseconds(500); // Trễ 1ms
+    delay(100);
+    //delayMicroseconds(500); // Trễ 1ms
 
   }
   Serial.print(vLimitY);
 
   Serial.print("RESET Y xong! ");
   delay(200);
+  /*
   //digitalWrite(Enable, LOW); //
   digitalWrite(dir_Y, LOW); // Set Dir high  - Set chiều quay mức cao
   for (int j = 0; j < 800; j++) {
@@ -132,9 +134,9 @@ void _resetY() {
     {
 
       digitalWrite(step_Y, LOW); // Output high - xung mức cao
-      delayMicroseconds(80); // Trễ 1ms
+      delayMicroseconds(240); // Trễ 1ms
       digitalWrite(step_Y, HIGH); // Output low - xung mức thấp
-      delayMicroseconds(80); // Trễ 1ms
+      delayMicroseconds(240); // Trễ 1ms
     }
 
     vLimitY = analogRead(A0);
@@ -145,15 +147,16 @@ void _resetY() {
     delayMicroseconds(500); // Trễ 1ms
 
   }
-  Serial.print("QUAY THEM! ");
+  */
+  Serial.print("QUAY THEM VE CHINH GIUA ");
 
-  for (int x = 0; x < 900; x++) // lặp 4096 lần
+  for (int x = 0; x < 2600; x++) // lặp 4096 lần
   {
 
     digitalWrite(step_Y, LOW); // Output high - xung mức cao
-    delayMicroseconds(400); // Trễ 1ms
+    delayMicroseconds(200); // Trễ 1ms
     digitalWrite(step_Y, HIGH); // Output low - xung mức thấp
-    delayMicroseconds(400); // Trễ 1ms
+    delayMicroseconds(200); // Trễ 1ms
   }
 }
 void _motorY(int so_vong) {
