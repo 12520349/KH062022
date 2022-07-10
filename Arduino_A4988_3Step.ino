@@ -59,6 +59,9 @@ void loop() {
     if ((name_motor == "X") && (so_vong != 0)) {
       _motorX(so_vong);
     }
+      if ((name_motor == "X") && (so_vong == 0)) {
+      _resetX();
+    }
     delay(500);
   }
 }
@@ -83,6 +86,29 @@ void _motorX(int so_vong) {
   }
   Serial.println("Da xong!");
   delay(500);
+}
+
+
+void _resetX() {
+  int vLimitx = digitalRead(limit_X);
+  while (vLimitx != 0) {
+    vLimitx = digitalRead(limit_X);
+    int max_X = 80;
+    digitalWrite(dir_X, HIGH); // Set Dir high  - Set chiều quay mức cao
+    for (int x = 0; x < max_X; x++) // lặp 4096 lần
+    {
+
+      digitalWrite(step_X, LOW); // Output high - xung mức cao
+      delayMicroseconds(80); // Trễ 1ms
+      digitalWrite(step_X, HIGH); // Output low - xung mức thấp
+      delayMicroseconds(80); // Trễ 1ms
+    }
+
+  }
+  Serial.print(vLimitx);
+
+  Serial.print("RESET X xong! ");
+  delay(200);
 }
 
 void _resetY() {
